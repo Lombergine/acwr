@@ -14,7 +14,7 @@ Before this package there was no Python implementation. R has two, `Athlytics`
 on rOpenSci and `ACWR` on CRAN.
 
 ![Three years of one runner's training, with all three ratio methods computed over
-it](docs/img/acwr-real-data.png)
+it](https://raw.githubusercontent.com/Lombergine/acwr/main/docs/img/acwr-real-data.png)
 
 The figure above is 1,018 runs over 1,199 days. The middle panel is the same training
 read three ways, and the dotted line at 4.0 is the ceiling the coupled method cannot
@@ -486,17 +486,17 @@ a guard against an impossible operation.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+See [CONTRIBUTING.md](https://github.com/Lombergine/acwr/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/Lombergine/acwr/blob/main/CODE_OF_CONDUCT.md).
 Bug reports with a reproducible example are the most useful thing, and a failing
 test is better than a description.
 
 ## How this package was built
 
 Claude was used as a pair programmer throughout, and
-[AI-USAGE.md](AI-USAGE.md) says exactly what it did, what the author did, and
+[AI-USAGE.md](https://github.com/Lombergine/acwr/blob/main/AI-USAGE.md) says exactly what it did, what the author did, and
 the five errors the process produced along with the mechanism that caught each
 one.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](https://github.com/Lombergine/acwr/blob/main/LICENSE).
