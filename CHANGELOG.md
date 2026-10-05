@@ -3,6 +3,26 @@
 All notable changes are recorded here. This project follows
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] - 2026-10-05
+
+### Fixed
+- The README used repository-relative paths for its figure and for the links
+  to `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `AI-USAGE.md` and `LICENSE`.
+  GitHub resolves those against the repository root; PyPI renders the README
+  outside any repository, so on the project page the figure was a broken image
+  and the four links were dead. They are absolute now. Found by looking at the
+  published page after 0.1.0 rather than by any local check, because every
+  local renderer resolves them.
+
+### Changed
+- Every GitHub Action is bumped to a major that runs on Node.js 24:
+  `checkout` and `setup-python` to v7, `upload-artifact` and
+  `download-artifact` to v7, `upload-pages-artifact` to v4 and `deploy-pages`
+  to v5. The previous majors target Node.js 20, which GitHub has deprecated
+  and was already force-running on Node.js 24, producing fourteen warnings per
+  continuous integration run. A package that emits warnings from its own
+  infrastructure teaches its users to ignore warnings.
+
 ## [0.1.0] - 2026-10-05
 
 First public release.
