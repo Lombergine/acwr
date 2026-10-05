@@ -3,7 +3,9 @@
 All notable changes are recorded here. This project follows
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.1.0] - 2026-10-05
+
+First public release.
 
 ### Added
 - `daily_load` builds a continuous daily load series from activity records,

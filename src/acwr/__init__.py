@@ -54,7 +54,7 @@ from .progression import block_change, week_to_week_change
 from .quality import Finding, LoadQuality, check_load
 from .ratio import METHODS, acute_load, acwr, chronic_load
 
-__version__ = "0.1.0.dev0"
+__version__ = "0.1.0"
 
 __all__ = [
     "__version__",

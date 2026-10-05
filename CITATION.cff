@@ -30,8 +30,8 @@ keywords:
   - running
   - athlete monitoring
 license: MIT
-version: 0.1.0.dev0
-date-released: "2026-10-04"
+version: 0.1.0
+date-released: "2026-10-05"
 references:
   - type: article
     authors:
