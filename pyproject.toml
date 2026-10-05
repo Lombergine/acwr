@@ -42,7 +42,16 @@ dependencies = [
 
 [project.optional-dependencies]
 plot = ["matplotlib>=3.7"]
-test = ["pytest>=7.0", "pytest-cov>=4.0", "hypothesis>=6.100", "pyyaml>=6.0", "matplotlib>=3.7"]
+test = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "hypothesis>=6.100",
+    "pyyaml>=6.0",
+    "matplotlib>=3.7",
+    # tomllib entered the standard library in 3.11; below that the test
+    # suite reads pyproject.toml through the backport of the same API.
+    'tomli>=2.0.1; python_version < "3.11"',
+]
 docs = [
     # MkDocs 2.0 removes the plugin system, so the docs build is pinned to 1.x.
     "mkdocs>=1.6,<2",

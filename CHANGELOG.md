@@ -57,6 +57,12 @@ All notable changes are recorded here. This project follows
   correlation does not constrain agreement at a cut point.
 
 ### Fixed
+- The test suite imported `tomllib` unconditionally, which is in the
+  standard library only from Python 3.11. The package claims support for
+  3.10 and works there, but the suite could not be collected, so the first
+  continuous integration run failed on 3.10 across all three operating
+  systems. The import is now conditional and the `test` extra supplies the
+  `tomli` backport below 3.11.
 - `daily_load` normalises `start` and `end`. A bound carrying a time of day
   built an index that matched no activity, and under the default zero fill the
   whole series came back as rest days with no error and no sign that the load

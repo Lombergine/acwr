@@ -10,11 +10,16 @@ PyPI permanently, so they are checked here rather than remembered.
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
 import pytest
-import tomllib
 import yaml
+
+if sys.version_info >= (3, 11):
+    import tomllib
+else:  # pragma: no cover - only taken on Python 3.10
+    import tomli as tomllib
 
 import acwr
 
