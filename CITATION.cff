@@ -1,0 +1,86 @@
+cff-version: 1.2.0
+title: "acwr: acute:chronic workload ratios in Python, with diagnostics for the metric itself"
+message: "If you use this software, please cite it using these metadata. If you use a particular ratio method, cite its original source as well; the README lists them."
+type: software
+authors:
+  - given-names: Aditya
+    family-names: Garg
+    email: gargaditya061@gmail.com
+    orcid: "https://orcid.org/0009-0003-1004-500X"
+    city: San Jose
+    region: California
+    country: US
+repository-code: "https://github.com/Lombergine/acwr"
+url: "https://lombergine.github.io/acwr/"
+abstract: >-
+  A Python implementation of the acute:chronic workload ratio in all three
+  published forms, together with the companion quantities from Foster (1998)
+  and a set of diagnostics for interrogating the metric itself. The
+  diagnostics include the null-denominator test proposed by Impellizzeri et
+  al. (2021) and a sweep over window lengths that reports how much the choice
+  of acute and chronic windows determines which days are flagged. The package
+  makes no claim that the ratio predicts injury and ships none of the
+  threshold bands that circulate in applied practice.
+keywords:
+  - sports science
+  - biomechanics
+  - training load
+  - acute chronic workload ratio
+  - injury risk
+  - running
+  - athlete monitoring
+license: MIT
+version: 0.1.0.dev0
+date-released: "2026-10-04"
+references:
+  - type: article
+    authors:
+      - family-names: Williams
+        given-names: Sean
+      - family-names: West
+        given-names: Stephen
+      - family-names: Cross
+        given-names: Matthew J.
+      - family-names: Stokes
+        given-names: Keith A.
+    title: "Better way to determine the acute:chronic workload ratio?"
+    journal: British Journal of Sports Medicine
+    year: 2017
+    volume: 51
+    issue: 3
+    start: 209
+    end: 210
+  - type: article
+    authors:
+      - family-names: Impellizzeri
+        given-names: Franco M.
+      - family-names: Woodcock
+        given-names: Simon
+      - family-names: Coutts
+        given-names: Aaron J.
+      - family-names: Fanchini
+        given-names: Maurizio
+      - family-names: McCall
+        given-names: Alan
+      - family-names: Vigotsky
+        given-names: Andrew D.
+    title: "What role do chronic workloads play in the acute to chronic workload ratio? Time to dismiss ACWR and its underlying theory"
+    journal: Sports Medicine
+    year: 2021
+    volume: 51
+    issue: 3
+    start: 581
+    end: 592
+    doi: 10.1007/s40279-020-01378-6
+  - type: article
+    authors:
+      - family-names: Foster
+        given-names: Carl
+    title: "Monitoring training in athletes with reference to overtraining syndrome"
+    journal: "Medicine & Science in Sports & Exercise"
+    year: 1998
+    volume: 30
+    issue: 7
+    start: 1164
+    end: 1168
+    doi: 10.1097/00005768-199807000-00023

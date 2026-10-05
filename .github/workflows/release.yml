@@ -1,0 +1,58 @@
+name: Release
+
+# Publishes to PyPI when a version tag is pushed. Uses trusted publishing, so
+# no API token is stored in repository secrets: PyPI verifies the workflow's
+# identity through OIDC. Configure the publisher once at
+# https://pypi.org/manage/account/publishing/ before the first tag.
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  test:
+    uses: ./.github/workflows/ci.yml
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check dist/*
+      # Refuse to publish a tag that disagrees with the package's own version,
+      # which is the easiest way to put the wrong thing on PyPI permanently.
+      - name: Check the tag matches the package version
+        run: |
+          python - <<'PY'
+          import os, re, pathlib, sys
+          tag = os.environ["GITHUB_REF_NAME"].lstrip("v")
+          src = pathlib.Path("src/acwr/__init__.py").read_text()
+          version = re.search(r'__version__ = "([^"]+)"', src).group(1)
+          cff = pathlib.Path("CITATION.cff").read_text()
+          cited = re.search(r"^version: (.+)$", cff, re.M).group(1).strip()
+          print(f"tag={tag} __version__={version} CITATION.cff={cited}")
+          if not (tag == version == cited):
+              sys.exit("tag, __version__ and CITATION.cff must agree")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

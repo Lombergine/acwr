@@ -1,0 +1,35 @@
+{
+  "title": "acwr: acute:chronic workload ratios in Python, with diagnostics for the metric itself",
+  "description": "<p>A Python implementation of the acute:chronic workload ratio in all three published forms, together with the companion quantities from Foster (1998) and a set of diagnostics for interrogating the metric itself. The diagnostics include the null-denominator test proposed by Impellizzeri et al. (2021) and a sweep over window lengths that reports how much the choice of acute and chronic windows determines which days are flagged. The package makes no claim that the ratio predicts injury and ships none of the threshold bands that circulate in applied practice.</p>",
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Garg, Aditya",
+      "orcid": "0009-0003-1004-500X"
+    }
+  ],
+  "keywords": [
+    "sports science",
+    "biomechanics",
+    "training load",
+    "acute chronic workload ratio",
+    "injury risk",
+    "running",
+    "athlete monitoring",
+    "Python"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Lombergine/acwr",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://lombergine.github.io/acwr/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}

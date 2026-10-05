@@ -1,0 +1,110 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "acwr"
+dynamic = ["version"]
+description = "Acute:chronic workload ratios in Python, with the diagnostics to test whether they mean anything"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Aditya Garg", email = "gargaditya061@gmail.com" }]
+keywords = [
+    "sports science",
+    "biomechanics",
+    "training load",
+    "acute chronic workload ratio",
+    "acwr",
+    "injury risk",
+    "running",
+    "athlete monitoring",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.7"]
+test = ["pytest>=7.0", "pytest-cov>=4.0", "hypothesis>=6.100", "pyyaml>=6.0", "matplotlib>=3.7"]
+docs = [
+    # MkDocs 2.0 removes the plugin system, so the docs build is pinned to 1.x.
+    "mkdocs>=1.6,<2",
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.25",
+]
+dev = ["acwr[test]", "acwr[docs]", "acwr[plot]", "ruff>=0.5", "mypy>=1.8"]
+
+[project.urls]
+Homepage = "https://github.com/Lombergine/acwr"
+Repository = "https://github.com/Lombergine/acwr"
+Issues = "https://github.com/Lombergine/acwr/issues"
+Changelog = "https://github.com/Lombergine/acwr/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/acwr/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/acwr"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/acwr/py.typed" = "acwr/py.typed"
+
+[tool.pytest.ini_options]
+# The docstring examples are run by tests/test_doctests.py rather than by
+# pointing testpaths at src/. Collecting src/ directly works only for an
+# editable install: once `acwr` also exists in site-packages, pytest refuses
+# the duplicate module and the whole run errors at collection. Running them
+# through the imported package works either way.
+#
+# The markdown glob is deliberately not set either. Several blocks in the
+# README are illustrative and read files that are not in the repository, so
+# asserting them would be a lie; the one page that is meant to be runnable,
+# docs/example.md, is executed by tests/test_docs.py.
+testpaths = ["tests"]
+filterwarnings = ["error::RuntimeWarning"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+# Code blocks in the docs keep their comments column-aligned on purpose, which
+# the formatter would undo. Lint and format the package and tests, not the prose.
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "A", "C4", "SIM", "RUF", "D"]
+ignore = ["D105", "D107", "D203", "D213"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D100", "D103"]
+# __all__ in the package root is grouped by what each name is for, which reads
+# better for a user than alphabetical order.
+"src/acwr/__init__.py" = ["RUF022"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = ["scipy.*", "pandas.*", "numpy.*"]
+ignore_missing_imports = true

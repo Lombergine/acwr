@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.DS_Store
+
+# Personal training data: yours to decide whether to publish.
+data/
+out/
+
+# Built documentation
+site/
+
+# Working notes written for the author, not for readers of the package.
+# These carry a candid submission-readiness audit and career strategy, and
+# publishing them alongside the code would hand every reviewer the author's
+# own worst-case assessment of the work. Kept locally; see acwr-private/.
+ACCEPTANCE.md
+PRESTIGE.md
+NEXT-STEPS.md
+SUBMISSION.md
